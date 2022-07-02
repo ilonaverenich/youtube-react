@@ -1,21 +1,11 @@
-/* import { GET_VALUE_INPUT } from "../actions/actionsType";
+import {GET_INPUT_VALUE} from '../actions/actionsType';
+const initialValue ='';
 
-const initialValue = [];
-
-
-export const getValue =(state = initialValue, action)=>{
-   
-    switch (action.type){ 
-        case GET_VALUE_INPUT:{
-        console.log('--------')
-            return [
-             action.payload.data
-        ]
+export default function textReducer(state = initialValue, action){
+    switch(action.type){
+        case GET_INPUT_VALUE: {
+            return action.payload;
         }
-        default: {
-            return state;
-        }
-        
+        default: {return state}
     }
 }
- */
