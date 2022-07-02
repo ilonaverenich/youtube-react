@@ -1,7 +1,7 @@
 import './App.less';
-import Avtorization from './components/Avtorization';
+import Avtorization from './components/Avtorization/Avtorization';
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
-import Search from './components/Search';
+import Search from './components/Search/Search';
 import Favorites from './components/Favorites';
 
 function App() {
@@ -13,7 +13,6 @@ function App() {
         <Routes><Route path='/' element={<Avtorization/>}></Route></Routes>
         <Routes><Route path='/search' element={<Search/>}></Route></Routes>
         <Routes><Route path='/favorites' element={<Favorites/>}></Route></Routes>
-
 
       </BrowserRouter> 
     

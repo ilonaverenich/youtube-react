@@ -1,11 +1,12 @@
 import {useNavigate} from 'react-router-dom';
+import styles from './Menu.module.less'
 
 function Menu() {
   const navigate = useNavigate();
   return (
-    <header className='header'>
-        <div className='navBar'>
-                <img className='img_youtube'  src="https://i.postimg.cc/J42J4wmG/yt.png" alt="image-youtube" onClick={()=>navigate('/search')}/>
+    <header className={styles.header}>
+        <div className={styles.navBar}>
+           <img className={styles.logo} src="https://i.postimg.cc/J42J4wmG/yt.png" alt="image-youtube" onClick={()=>navigate('/search')}/>
                 <nav>
                 <ul>
 
@@ -14,10 +15,12 @@ function Menu() {
                 
                 </ul>
                 </nav> 
-                 <a href="#" className='exit'>Выйти</a>
+         
+                <a href="#" className={styles.exit}>Выйти</a>
+         
          </div>
       </header>
   )
 }
 
-export default Menu
+export default Menu;
