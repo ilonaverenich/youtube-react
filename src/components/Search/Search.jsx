@@ -5,7 +5,8 @@ import {useDispatch, useSelector} from 'react-redux';
 import { getValueInput } from '../../redux/actions/getValueInput';
 import { checkStateComponent } from '../../redux/actions/checkStateComponent';
 import {axiosData} from '../../redux/actions/getDataAction';
-import styles from './Search.module.less'
+import styles from './Search.module.less';
+
 
 
 function Search() {
@@ -14,6 +15,7 @@ function Search() {
   const inputValue = useSelector((store)=>store.data)
   const InputCallState = useSelector((store)=>store.state)
   const video = useSelector((store)=>store.obj[0])
+  const status = useSelector((store)=>store.status);
  
  function handlefunc(){
     dispatch(checkStateComponent(true));
@@ -33,7 +35,7 @@ function Search() {
 
 
        {InputCallState ? <Infoline/> : null} 
-          <div className={styles.container_row}>
+          <div className={status.list? styles.container_row: styles.container_column}>
         {
             video &&  video.data.items.map((item,key)=> <div  className={styles.card}  key={key}>
               <img className={styles.img} width={120} height={90} src={item.snippet.thumbnails.default.url} alt="image-logo-video" />
