@@ -11,7 +11,7 @@ function Menu() {
                 <ul>
 
                 <li> <a onClick={()=>navigate('/search')}> Поиск</a></li>
-                <li><a onClick={()=>navigate('/favorites')} >Избранное</a> </li>
+                <li> <a onClick={()=>navigate('/favorites')} >Избранное</a> </li>
                 
                 </ul>
                 </nav> 

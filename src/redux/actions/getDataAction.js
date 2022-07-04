@@ -3,8 +3,9 @@ import axios from "axios";
 
 export const axiosData =(inputValue)=>async(dispatch)=>{ 
     try{
-        const data =  await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${inputValue}&type=video&key=AIzaSyCbTsQhecq1pp2hNFC7d2_qTyj_Ja71hiU`);
-         dispatch(getData(data))
+        const data =  await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${inputValue}&type=video&key=AIzaSyCbTsQhecq1pp2hNFC7d2_qTyj_Ja71hiU`)
+        
+        dispatch(getData(data))
     }
     catch {
         throw new Error ('Error!')
