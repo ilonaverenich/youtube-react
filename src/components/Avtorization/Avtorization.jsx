@@ -2,10 +2,17 @@ import { Button, Form, Input,message } from 'antd';
 import { useNavigate } from 'react-router-dom'; 
 import styles from'./Avtorization.module.less'
 import axios from 'axios';
+import {useSelector, useDispatch} from 'react-redux';
+import { checkUser } from '../../redux/actions/avtorizAction';
 
 
 function Avtorization() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const isAuth = useSelector((store)=> store.isAuth);
+//isAuth хранит авторизацию пользователя
+
+
 
       const onFinish = (values) => {
           axios.post('https://typ-back-end.herokuapp.com/api/login', {
@@ -13,12 +20,13 @@ function Avtorization() {
           "password": values.password,
         }).then((res)=>{
           if (res.data.token !==null){
-            navigate('/search')
+            navigate('/search');
+            dispatch(checkUser(true))
             localStorage.setItem('token', res.data.token);
           }
 
             else {
-              message.error('Ошибка! Проверьте введённые данные или зарегистрируйтесь');
+               message.error('Ошибка! Проверьте введённые данные или зарегистрируйтесь');
           }
       })};
     

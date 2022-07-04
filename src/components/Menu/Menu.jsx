@@ -1,8 +1,12 @@
 import {useNavigate} from 'react-router-dom';
 import styles from './Menu.module.less'
+import {useSelector, useDispatch} from 'react-redux';
+import { checkUser } from '../../redux/actions/avtorizAction';
 
 function Menu() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const isAuth = useSelector((store)=> store.isAuth);
   return (
     <header className={styles.header}>
         <div className={styles.navBar}>
@@ -16,7 +20,7 @@ function Menu() {
                 </ul>
                 </nav> 
          
-                <a href="#" className={styles.exit}>Выйти</a>
+                <a href="#" className={styles.exit} onClick={()=>dispatch(checkUser(false))}>Выйти</a>
          
          </div>
       </header>
