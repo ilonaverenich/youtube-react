@@ -21,20 +21,19 @@
 .container_row {
     margin-top: 10px;
     display: grid;
-    grid-template-rows:1fr  ;
+    /* grid-template-rows:1fr; */
     grid-template-columns: 1fr;
-    width: 100%;
+    
 }
 
 .container_column {
- 
-    margin-top: 10px;
     display: grid;
-    width: 100%;
-    grid-template-rows:1fr 1fr 1fr;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    grid-gap: 1vw;
-    align-items: center;
+    margin-top: 10px;
+    grid-template-columns:1fr 1fr 1fr;
+    grid-gap: 10px;
+    
+
+  
 
 }
 .container_column > div{
@@ -44,26 +43,47 @@
     margin: 0;
 }
 
-.text {
-    text-overflow: ellipsis;
-    white-space: nowrap;
+.text_row {
+   text-overflow: ellipsis;
     overflow: hidden;
     color: #b4b4b4;
+    height: 45px;
+}
+.text_column {
+    text-overflow: ellipsis;
+   white-space: nowrap; 
+   overflow: hidden;
+   color: #b4b4b4;
+   
 }
 
 .subtext {
+    height: 40px;
     font-size: 12px;
     padding: 0;
     margin: 0;
     font-weight: bold;
     word-wrap: break-word;
     overflow: hidden; 
+  
 }
 
 .img{
     margin: 0px 20px;
 }
 .card{
-    margin: 15px;
+    
+   display: flex;
+   justify-content: center;
+   align-items: center;
+    margin-top: 10px;
     display: flex;
+}
+.card img{
+    
+    display: block;
+    text-align: center; 
+}
+.heart {
+    cursor: pointer;
 }

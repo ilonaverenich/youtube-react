@@ -6,4 +6,6 @@ export const STATUS_LIST ='STATUS_LIST';
 export const STATUS_TABLE ='STATUS_TABLE';
 export const ID ='ID';
 export const VIEWS ='VIEWS';
+export const STATUS_FAVORITES = 'STATUS_FAVORITES';
+export const DATA_FAVORITES = 'DATA_FAVORITES';
 

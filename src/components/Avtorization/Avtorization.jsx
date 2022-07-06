@@ -42,7 +42,7 @@ function Avtorization() {
     
       <Form
         name="basic"
-
+        onKeyUp={(e)=>e.code === 'Enter'?onFinish():''}
         initialValues={{remember: true }}
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}>

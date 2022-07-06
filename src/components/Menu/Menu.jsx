@@ -7,23 +7,31 @@ function Menu() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const isAuth = useSelector((store)=> store.isAuth);
+
+  function exitClick(){
+    dispatch(checkUser(false))
+    localStorage.clear();
+  }
   return (
-    <header className={styles.header}>
+    <div className={styles.header_bg}>
+      <header className={styles.header}>
         <div className={styles.navBar}>
            <img className={styles.logo} src="https://i.postimg.cc/J42J4wmG/yt.png" alt="image-youtube" onClick={()=>navigate('/search')}/>
                 <nav>
                 <ul>
 
-                <li> <a onClick={()=>navigate('/search')}> Поиск</a></li>
-                <li> <a onClick={()=>navigate('/favorites')} >Избранное</a> </li>
+                <li> <p className={styles.link} onClick={()=>navigate('/search')}> Поиск</p></li>
+                <li> <p className={styles.link} onClick={()=>navigate('/favorites')} >Избранное</p> </li>
                 
                 </ul>
                 </nav> 
          
-                <a href="#" className={styles.exit} onClick={()=>dispatch(checkUser(false))}>Выйти</a>
+                <a href="#" className={styles.exit} onClick={()=>exitClick()}>Выйти</a>
          
          </div>
       </header>
+    </div>
+    
   )
 }
 

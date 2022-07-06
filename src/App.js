@@ -9,17 +9,16 @@ import {useSelector} from 'react-redux';
 function App() {
   const isAuth = useSelector((store)=> store.isAuth);
 
-  const PrivateOutlet = () => {
+/*   const PrivateOutlet = () => {
     const { pathname } = useLocation();
-    console.log({ pathname });
-  
+   
     return  isAuth ? (
       <Search />
     ) : (
       <Navigate to="/login" state={{ from: pathname }} replace />
     );
   };
-
+ */
  
 
   return (
@@ -28,12 +27,11 @@ function App() {
     <BrowserRouter>
 
         <Routes>
-            <Route path='/login' element={<Avtorization/>}></Route>
-
-            <Route path="*" element={<PrivateOutlet />}>
-                <Route path="search" element={<Search />} />
-                <Route path="favorites" element={<Favorites />} />
-            </Route>
+            <Route path='/login' element={<Avtorization/>}/>
+         {/*    <Route path="/*" element={<PrivateOutlet />}> */}
+                <Route path="/search" element={<Search />} />
+                <Route path="/favorites" element={<Favorites />} />
+          {/*   </Route> */}
           
         </Routes>
 
