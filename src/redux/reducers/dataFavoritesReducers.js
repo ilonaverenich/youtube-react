@@ -6,7 +6,7 @@ export const getDataFavorite = (state = [],action)=>{
    
         case DATA_FAVORITES : 
         
-            return [...state, action.payload]  
+            return [...state, action.payload] 
         default:{
             return state;
         };

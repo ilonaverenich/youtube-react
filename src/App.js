@@ -9,7 +9,7 @@ import {useSelector} from 'react-redux';
 function App() {
   const isAuth = useSelector((store)=> store.isAuth);
 
-/*   const PrivateOutlet = () => {
+   const PrivateOutlet = () => {
     const { pathname } = useLocation();
    
     return  isAuth ? (
@@ -18,7 +18,7 @@ function App() {
       <Navigate to="/login" state={{ from: pathname }} replace />
     );
   };
- */
+
  
 
   return (
@@ -28,10 +28,10 @@ function App() {
 
         <Routes>
             <Route path='/login' element={<Avtorization/>}/>
-         {/*    <Route path="/*" element={<PrivateOutlet />}> */}
-                <Route path="/search" element={<Search />} />
-                <Route path="/favorites" element={<Favorites />} />
-          {/*   </Route> */}
+           <Route path="/*" element={<PrivateOutlet />}> 
+                <Route path="search" element={<Search />} />
+                <Route path="favorites" element={<Favorites />} />
+          </Route>
           
         </Routes>
 

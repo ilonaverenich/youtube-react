@@ -1,4 +1,4 @@
-import {Input, Button , Modal} from 'antd';
+import {Input, Button} from 'antd';
 import Menu from '../Menu/Menu';
 import Infoline from './Infoline/Infoline';
 import ModalWindow from './ModalWindow/Modal';
@@ -6,11 +6,11 @@ import {useDispatch, useSelector} from 'react-redux';
 import { getValueInput } from '../../redux/actions/getValueInput';
 import { checkStateComponent } from '../../redux/actions/checkStateComponent';
 import {axiosData} from '../../redux/actions/getDataAction';
-/* import {axiosIDViews} from '../../redux/actions/getIdVideoAction' */
 import styles from './Search.module.less';
 import {useState} from 'react'
 import {getStatusFavorite} from '../../redux/actions/statusAction';
 import {dataFav} from '../../redux/actions/dataFavoritesAction';
+import View from './View';
 
 
 
@@ -21,7 +21,6 @@ function Search() {
   const InputCallState = useSelector((store)=>store.state)
   const video = useSelector((store)=>store.obj[0])
   const status = useSelector((store)=>store.status);
-  const statistic = useSelector((store)=>store.id[0]);
   const favoriteList = useSelector((store)=> store.favorite)
 
   const [inpValue,setInpValue] = useState('');
@@ -36,28 +35,31 @@ function Search() {
     setInpValue(inputValue)
   }
   function clickHeart(){
-    if (status.heart){
-     dispatch(getStatusFavorite(false))
    
-    }
-    else {
-      dispatch(getStatusFavorite(true))
-      dispatch(dataFav(inputValue))
-      setIsModalVisible(true);
-    }
+    setIsModalVisible(true)
 
   }
   const showModal = () => {
     setIsModalVisible(false);
   };
   const handleOk = () => {
+    if (status.heart && inputValue.length !==0){
+      dispatch(getStatusFavorite(false))
+      setInpValue('')
+     
+    
+     }
+     else {
+       dispatch(getStatusFavorite(true))
+       dispatch(dataFav(inputValue))
+       setIsModalVisible(true);
+     }
     setIsModalVisible(false);
   };
 
   const handleCancel = () => {
     setIsModalVisible(false);
   };
-
 
   return (
     <div>
@@ -90,7 +92,7 @@ function Search() {
 
         </div>
 
-
+{/* 
        {InputCallState ? <Infoline value={inpValue}/> : null} 
      <div className={status.list? styles.container_row: styles.container_column}>
         {
@@ -106,14 +108,13 @@ function Search() {
                 className={styles.subtext}>{item.snippet.title}</p>
                 <p 
                 className={styles.container_row? styles.text_row: styles.text_column} >{item.snippet.description}</p>
-                
-              <p>просмотры: {statistic && statistic.data.items[0].statistics.viewCount}</p>   
+             
+              
        
              </div>
-            
             </div> ) 
-        } </div>   
-      
+        } </div>   */} 
+        {/*  <p>Кол-во просмотров:   {item.id.videoId.length !==0 ? <View id={item.id.videoId}/>:'хей, пока тут пусто'}</p> */}
       <ModalWindow inpValue={inpValue} isModalVisible={isModalVisible} handleOk={handleOk} handleCancel={handleCancel} />
        </div> 
     </div>
