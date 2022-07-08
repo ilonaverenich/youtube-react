@@ -15,7 +15,7 @@ const [dataVal, setData] = useState([])
 console.log(dataVal)
 
   return (
-     <span className='view_block'>
+     <div className='view_block'>
       <div>
       <img src="https://i.postimg.cc/05Mw2Cj3/3844476-eye-see-show-view-watch-110339-1.png" width={20} alt="view-icon" /> 
       {
@@ -35,7 +35,7 @@ console.log(dataVal)
          dataVal && dataVal[0]  ?dataVal[0].statistics.commentCount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","):'Ничего нет!'
       }
      </div>
-      </span>
+      </div>
   )
 }
 

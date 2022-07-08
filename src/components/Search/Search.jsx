@@ -24,11 +24,7 @@ function Search() {
   const favoriteList = useSelector((store)=> store.favorite)
 
   const [inpValue,setInpValue] = useState(inputValue);
-  const [id,setId] = useState('');
   const [isModalVisible, setIsModalVisible] = useState(false);
-/*   const [favoriteList,setFavoriteList] = useState([]); */
-
-/* console.log(statistic.data.items[0].statistics.viewCount);  */
 
  function handlefunc(){
     dispatch(checkStateComponent(true));

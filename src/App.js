@@ -13,7 +13,7 @@ function App() {
     const { pathname } = useLocation();
    
     return  isAuth ? (
-      <Search />
+      <Search /> 
     ) : (
       <Navigate to="/login" state={{ from: pathname }} replace />
     );
@@ -28,12 +28,11 @@ function App() {
         <Routes>
             <Route path='/' element={<Avtorization/>}/>
             <Route path='/login' element={<Avtorization/>}/>
-           <Route path="/*" element={<PrivateOutlet />}> 
+           <Route path="*" element={<PrivateOutlet />}> 
                 <Route path="search" element={<Search />} />
                 <Route path="favorites" element={<Favorites />} />
           </Route>
         </Routes>
-
       </BrowserRouter> 
     
      
