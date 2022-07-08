@@ -23,7 +23,8 @@ function Search() {
   const status = useSelector((store)=>store.status);
   const favoriteList = useSelector((store)=> store.favorite)
 
-  const [inpValue,setInpValue] = useState('');
+  const [inpValue,setInpValue] = useState(inputValue);
+  const [id,setId] = useState('');
   const [isModalVisible, setIsModalVisible] = useState(false);
 /*   const [favoriteList,setFavoriteList] = useState([]); */
 
@@ -92,7 +93,7 @@ function Search() {
 
         </div>
 
-{/* 
+
        {InputCallState ? <Infoline value={inpValue}/> : null} 
      <div className={status.list? styles.container_row: styles.container_column}>
         {
@@ -108,13 +109,17 @@ function Search() {
                 className={styles.subtext}>{item.snippet.title}</p>
                 <p 
                 className={styles.container_row? styles.text_row: styles.text_column} >{item.snippet.description}</p>
+        
+             <div className={styles.view_block}>
              
-              
+             <span className={styles.views_count_text}>{ <View id={item.id.videoId}/>}</span>
+             </div>
        
              </div>
+            
             </div> ) 
-        } </div>   */} 
-        {/*  <p>Кол-во просмотров:   {item.id.videoId.length !==0 ? <View id={item.id.videoId}/>:'хей, пока тут пусто'}</p> */}
+        } </div>  
+   
       <ModalWindow inpValue={inpValue} isModalVisible={isModalVisible} handleOk={handleOk} handleCancel={handleCancel} />
        </div> 
     </div>

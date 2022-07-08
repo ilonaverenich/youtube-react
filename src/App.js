@@ -25,14 +25,13 @@ function App() {
     <div className="App">
 
     <BrowserRouter>
-
         <Routes>
+            <Route path='/' element={<Avtorization/>}/>
             <Route path='/login' element={<Avtorization/>}/>
            <Route path="/*" element={<PrivateOutlet />}> 
                 <Route path="search" element={<Search />} />
                 <Route path="favorites" element={<Favorites />} />
           </Route>
-          
         </Routes>
 
       </BrowserRouter> 
