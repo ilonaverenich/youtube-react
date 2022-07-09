@@ -1,37 +1,46 @@
 import './App.less';
 import Avtorization from './components/Avtorization/Avtorization';
-import {BrowserRouter, Routes, Route, Navigate,  useLocation} from 'react-router-dom'
+import {BrowserRouter, Routes, Route, Navigate,  useLocation, useNavigate} from 'react-router-dom'
 import Search from './components/Search/Search';
 import Favorites from './components/Favorites';
 import {useSelector} from 'react-redux';
+import React from 'react';
 
 
 function App() {
   const isAuth = useSelector((store)=> store.isAuth);
 
-   const PrivateOutlet = () => {
-    const { pathname } = useLocation();
+  const protectedPages = [
+    { path: '/search', page: <Search /> },
+    { path: '/favorites', page: <Favorites /> },
 
-    return  isAuth ? (
-      <Search /> 
-    ) : (
-      <Navigate to="/login" state={{ from: {pathname} }} replace />
-    );
-  }; 
+];
 
- 
+const RequireAuth = ({ children }) => {
+  const navigate = useNavigate();
+
+  React.useEffect(() => {
+      if (!isAuth) {
+          navigate('/');
+      }
+  }, [isAuth, navigate]);
+
+  return children;
+};
 
   return (
     <div className="App">
 
     <BrowserRouter>
         <Routes>
-           <Route path='/' element={<Avtorization/>}/>
-            <Route path='/login' element={<Avtorization/>}/>
-                   {/*  <Route path="/*" element={<PrivateOutlet />}>  */}
-                        <Route path="search" element={<Search />} />
-                        <Route path="favorites" element={<Favorites />} />
-              {/*       </Route>  */}
+          <Route path='/' element={<Avtorization/>}/>
+            {protectedPages.map((p, i) => (
+                    <Route
+                        path={p.path}
+                        element={<RequireAuth>{p.page}</RequireAuth>}
+                        key={i}
+                    />
+                ))}
         </Routes>
       </BrowserRouter> 
     
