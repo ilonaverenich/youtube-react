@@ -6,7 +6,7 @@ export const getData = (state = [],action)=>{
         case GET_DATA : 
  
             return [
-            action.payload
+        action.payload
             ]     
         default:{
             return state;

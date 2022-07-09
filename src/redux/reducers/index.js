@@ -5,6 +5,7 @@ import chechStateComponentReducers from './chechStateComponentReducers';
 import {getData}  from "./getDataRedusers";
 import {getStatus} from "./statusReducers";
 import {getDataFavorite} from "./dataFavoritesReducers";
+import {getRequest} from './requestReducer'
 
 
 
@@ -14,5 +15,6 @@ export default combineReducers({
     state: chechStateComponentReducers,
     obj: getData,
     status: getStatus,
-    favorite: getDataFavorite
+    favorite: getDataFavorite,
+    request: getRequest
 })

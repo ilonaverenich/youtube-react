@@ -8,3 +8,8 @@ export const VIEWS ='VIEWS';
 export const STATUS_FAVORITES = 'STATUS_FAVORITES';
 export const DATA_FAVORITES = 'DATA_FAVORITES';
 
+export const NAME_REQUEST = 'NAME_REQUEST';
+export const ORDER_REQUEST = 'ORDER_REQUEST';
+export const MAX_VALUE_COUNT_REQUEST = 'MAX_VALUE_COUNT_REQUEST';
+
+

@@ -19,20 +19,20 @@ console.log(dataVal)
       <div>
       <img src="https://i.postimg.cc/05Mw2Cj3/3844476-eye-see-show-view-watch-110339-1.png" width={20} alt="view-icon" /> 
       {
-         dataVal && dataVal[0]  ?  dataVal[0].statistics.viewCount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","):'Ничего нет!'
+         dataVal && dataVal[0]  ?  dataVal[0].statistics.viewCount .toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","):'Loading...'
       } 
       </div>
      <div>
-     <img src="https://i.postimg.cc/kGV1G6wG/likes.png"  width={20} height={20} alt="icon-likes" />  
+     <img src="https://i.postimg.cc/LXLPFsj7/likeslikes.png"  width={20} height={20} alt="icon-likes" />  
       {
-         dataVal && dataVal[0]  ?dataVal[0].statistics.likeCount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","):'Ничего нет!'
+         dataVal && dataVal[0]  ?dataVal[0].statistics.likeCount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") :'Loading...'
       }
      </div>
 
      <div>
      <img src="https://i.postimg.cc/52MJcbNL/comment.png"  width={20} height={20} alt="icon-likes" />  
       {
-         dataVal && dataVal[0]  ?dataVal[0].statistics.commentCount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","):'Ничего нет!'
+         dataVal && dataVal[0]  ?dataVal[0].statistics.commentCount ==undefined?'0':dataVal[0].statistics.commentCount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","):'Loading...'
       }
      </div>
       </div>

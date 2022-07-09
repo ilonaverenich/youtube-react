@@ -17,6 +17,7 @@ import View from './View';
 function Search() {
 
   const dispatch = useDispatch();
+  const request = useSelector((store)=>store.request)
   const inputValue = useSelector((store)=>store.data)
   const InputCallState = useSelector((store)=>store.state)
   const video = useSelector((store)=>store.obj[0])
@@ -26,9 +27,10 @@ function Search() {
   const [inpValue,setInpValue] = useState(inputValue);
   const [isModalVisible, setIsModalVisible] = useState(false);
 
+
  function handlefunc(){
     dispatch(checkStateComponent(true));
-    dispatch(axiosData(inputValue))
+    dispatch(axiosData(inputValue, 'viewCount', '6'))
     setInpValue(inputValue)
   }
   function clickHeart(){
@@ -42,7 +44,8 @@ function Search() {
   const handleOk = () => {
     if (status.heart && inputValue.length !==0){
       dispatch(getStatusFavorite(false))
-      setInpValue('')
+      dispatch(axiosData(inputValue, request.orderRequest, request.maxValueResult))
+
      
     
      }
@@ -116,7 +119,7 @@ function Search() {
             </div> ) 
         } </div>  
    
-      <ModalWindow inpValue={inpValue} isModalVisible={isModalVisible} handleOk={handleOk} handleCancel={handleCancel} />
+      <ModalWindow  inpValue={inpValue} isModalVisible={isModalVisible} handleOk={handleOk} handleCancel={handleCancel} />
        </div> 
     </div>
 

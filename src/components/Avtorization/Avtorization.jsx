@@ -23,6 +23,7 @@ function Avtorization() {
             navigate('/search');
             dispatch(checkUser(true))
             localStorage.setItem('token', res.data.token);
+            localStorage.setItem('email', values.username);
           }
 
             else {
