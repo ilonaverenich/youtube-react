@@ -1,13 +1,15 @@
+import React from 'react';
 import './App.less';
+import {BrowserRouter, Routes, Route, useNavigate} from 'react-router-dom';
+import {useSelector} from 'react-redux';
+
 import Avtorization from './components/Avtorization/Avtorization';
-import {BrowserRouter, Routes, Route, Navigate,  useLocation, useNavigate} from 'react-router-dom'
 import Search from './components/Search/Search';
 import Favorites from './components/Favorites';
-import {useSelector} from 'react-redux';
-import React from 'react';
 
 
 function App() {
+  //проверка на авторизацию пользователя. По умолчанию false
   const isAuth = useSelector((store)=> store.isAuth);
 
   const protectedPages = [
@@ -43,7 +45,6 @@ const RequireAuth = ({ children }) => {
                 ))}
         </Routes>
       </BrowserRouter> 
-    
      
     </div>
   );

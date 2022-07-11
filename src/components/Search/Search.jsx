@@ -1,8 +1,9 @@
+import {useDispatch, useSelector} from 'react-redux';
 import {Input, Button} from 'antd';
 import Menu from '../Menu/Menu';
 import Infoline from './Infoline/Infoline';
 import ModalWindow from './ModalWindow/Modal';
-import {useDispatch, useSelector} from 'react-redux';
+
 import { getValueInput } from '../../redux/actions/getValueInput';
 import { checkStateComponent } from '../../redux/actions/checkStateComponent';
 import {axiosData} from '../../redux/actions/getDataAction';
@@ -10,7 +11,8 @@ import styles from './Search.module.less';
 import {useState} from 'react'
 import {getStatusFavorite} from '../../redux/actions/statusAction';
 import {dataFav} from '../../redux/actions/dataFavoritesAction';
-import View from './View';
+import View from './View/View'
+import {getCount} from '../../redux/actions/countAction'
 
 
 
@@ -23,10 +25,11 @@ function Search() {
   const video = useSelector((store)=>store.obj[0])
   const status = useSelector((store)=>store.status);
   const favoriteList = useSelector((store)=> store.favorite)
+   const count = useSelector((store)=> store.count)
 
   const [inpValue,setInpValue] = useState(inputValue);
   const [isModalVisible, setIsModalVisible] = useState(false);
-
+  console.log(video)
 
  function handlefunc(){
     dispatch(checkStateComponent(true));
@@ -41,11 +44,13 @@ function Search() {
   const showModal = () => {
     setIsModalVisible(false);
   };
+
   const handleOk = () => {
     if (status.heart && inputValue.length !==0){
       dispatch(getStatusFavorite(false))
       dispatch(axiosData(inputValue, request.orderRequest, request.maxValueResult))
-
+      console.log(request.maxValueResult)
+      dispatch(getCount(request.maxValueResult)) 
      
     
      }
@@ -70,7 +75,7 @@ function Search() {
        
         <Input 
         value={inputValue}
-        suffix={<img  onClick={()=>clickHeart()} 
+        suffix={<img onClick={()=>clickHeart()} 
         className={styles.heart} 
         height={20} 
         src={status.heart?'https://i.postimg.cc/D0mSdHxD/icons8-48.png':'https://i.postimg.cc/FH07Zjx9/icons8-50.png' }></img>}
@@ -78,9 +83,7 @@ function Search() {
         className={styles.searchInput} 
         onChange={(e)=>{
           dispatch(getValueInput(e.target.value))
-          favoriteList.includes(e.target.value)?dispatch(getStatusFavorite(true)):dispatch(getStatusFavorite(false))
-          
-          
+          favoriteList.includes(e.target.value)?dispatch(getStatusFavorite(true)):dispatch(getStatusFavorite(false))  
         }}  
         placeholder='Что хотите посмотреть?'
         onKeyUp={(e)=>(inputValue.length>0 && e.code === 'Enter')?handlefunc():null} />
@@ -98,25 +101,23 @@ function Search() {
         {
              video &&  video.data.items.map((item,id)=> <div   className={styles.card}  key={id}>
               <img 
-              className={styles.img} 
-              width={120} 
-              height={90} 
-              src={item.snippet.thumbnails.default.url} 
+              width={item.snippet.thumbnails.medium.width} 
+              height={item.snippet.thumbnails.medium.height}  
+              src={item.snippet.thumbnails.medium.url} 
               alt="image-logo-video" />
-             <div>
+             <div className={styles.block_text}>
                 <p 
                 className={styles.subtext}>{item.snippet.title}</p>
                 <p 
-                className={styles.container_row? styles.text_row: styles.text_column} >{item.snippet.description}</p>
+                className={styles.container_row? styles.text_row: styles.text_column} ><span className={styles.subtitle}>{item.snippet.description}</span></p>
         
-             <div className={styles.view_block}>
-             
-             <span className={styles.views_count_text}>{ <View id={item.id.videoId}/>}</span>
-             </div>
-       
-             </div>
-            
-            </div> ) 
+              <div className={styles.view_block}>
+                   
+                      { <View id={item.id.videoId}/>}
+              </div>
+             </div> 
+            </div> 
+            ) 
         } </div>  
    
       <ModalWindow  inpValue={inpValue} isModalVisible={isModalVisible} handleOk={handleOk} handleCancel={handleCancel} />

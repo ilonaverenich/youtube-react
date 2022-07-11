@@ -6,6 +6,7 @@ import {getData}  from "./getDataRedusers";
 import {getStatus} from "./statusReducers";
 import {getDataFavorite} from "./dataFavoritesReducers";
 import {getRequest} from './requestReducer'
+import  getCountValue from './countReducer'
 
 
 
@@ -16,5 +17,7 @@ export default combineReducers({
     obj: getData,
     status: getStatus,
     favorite: getDataFavorite,
-    request: getRequest
+    count: getCountValue,
+    request: getRequest,
+
 })

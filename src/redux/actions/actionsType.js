@@ -12,4 +12,6 @@ export const NAME_REQUEST = 'NAME_REQUEST';
 export const ORDER_REQUEST = 'ORDER_REQUEST';
 export const MAX_VALUE_COUNT_REQUEST = 'MAX_VALUE_COUNT_REQUEST';
 
+export const COUNT = 'COUNT'
+
 
